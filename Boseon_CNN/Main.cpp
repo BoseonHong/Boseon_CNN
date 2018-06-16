@@ -19,6 +19,10 @@ int main() {
 	top[0]->print();
 
 	
+	Max_Pool_Parameter *Max_P =new Max_Pool_Parameter(2, 2, 2, 2, 0, 0);
+	Max_P->pooled_h(2);
+	// Max_P->Max_Pool(top);
+	
 
 	return 0;
 }
