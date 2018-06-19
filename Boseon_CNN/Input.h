@@ -9,4 +9,8 @@ public:
 	image(int b, int c, int h, int w);
 	void setImageData(int b, int c, int h, int w);
 	void print();
+	int getBatch_size();
+	int getChannel();
+	int getHeight();
+	int getWidth();
 };
