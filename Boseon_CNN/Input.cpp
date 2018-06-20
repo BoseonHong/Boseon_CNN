@@ -9,11 +9,15 @@ image::image(int b, int c, int h, int w) {
 	this->height = h;
 	this->width = w;
 }
-void image::setImageData(int b, int c, int h, int w) {
+void image::setImageinfo(int b, int c, int h, int w) {
 	this->batch_size = b;
 	this->channel = c;
 	this->height = h;
 	this->width = w;
+}
+// 2018.06.20 데이터 추가
+void image::setImageData(int *data) {
+	this->data = NULL;
 }
 void image::print() {
 	cout << this->batch_size << this->channel << this->height << this->width << endl;

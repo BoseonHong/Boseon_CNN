@@ -56,9 +56,24 @@ void Max_Pool_Parameter::Max_Pool(int batch_count, int in_channel, int in_height
 }
 
 
-void Max_Pool_Parameter::Max_Pool(vector<image> in, Max_Pool_Parameter para) {
+void Max_Pool_Parameter::Max_Pool(vector<image> &in, Max_Pool_Parameter &para) {
 	para.padding_horizontal;
-	for (int n = 0; n < in[0].getBatch_size(); ++n) {
+	int batch_size = in[0].getBatch_size();
+	int in_channel = in[0].getChannel();
+	int in_height = in[0].getHeight();
+	int in_width = in[0].getWidth();
+
+	int pooled_h = para.pooled_h(in_height);
+	int pooled_w = para.pooled_w(in_width);
+
+	int pool_stride_vertical = para.getStride_vertical();
+	int pool_stride_horizontal = para.getstride_horizontal();
+	int pool_window_h = para.getWindow_h();
+	int pool_window_w = para.getWindow_w();
+	int pool_padding_vertical = para.getPadding_vertical();
+	int pool_padding_horizontal = para.getPadding_horizontal();
+
+	for (int n = 0; n < batch_size; ++n) {
 		for (int c = 0; c < in_channel; ++c) {
 			for (int ph = 0; ph < pooled_h; ++ph) {
 				for (int pw = 0; pw < pooled_w; ++pw) {
@@ -80,7 +95,6 @@ void Max_Pool_Parameter::Max_Pool(vector<image> in, Max_Pool_Parameter para) {
 					}
 				}
 			}
-
 		}
 	}
 }
@@ -90,19 +104,19 @@ void Max_Pool_Parameter::Max_Pool(vector<image> in, Max_Pool_Parameter para) {
 
 
 int Max_Pool_Parameter::getStride_vertical() {
-	return this->stride_vertical
+	return this->stride_vertical;
 }
 int Max_Pool_Parameter::getstride_horizontal() {
-	return this->stride_horizontal
+	return this->stride_horizontal;
 }
 int Max_Pool_Parameter::getWindow_h() {
 	return this->window_h;
 }
 int Max_Pool_Parameter::getWindow_w() {
-	return this->window_w
+	return this->window_w;
 }
 int Max_Pool_Parameter::getPadding_vertical() {
-	return this->padding_vertical
+	return this->padding_vertical;
 }
 int Max_Pool_Parameter::getPadding_horizontal() {
 	return this->padding_horizontal;
