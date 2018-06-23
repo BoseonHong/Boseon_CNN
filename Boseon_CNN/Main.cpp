@@ -24,7 +24,8 @@ int main(int argc, char *argv[]) {
 	// Max_P->Max_Pool(top);
 	
 	//layer °èÃş ¸¸µé±â °èÃş ½×±â?
-
+	
+	// MacBook Test
 	
 
 	return 0;
